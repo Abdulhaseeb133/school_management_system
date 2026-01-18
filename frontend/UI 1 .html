@@ -1,0 +1,237 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        body {
+            font-size: x-large;
+            font-style: oblique;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: aquamarine;
+            background-color: rgb(35, 34, 33);
+        }
+
+        th,
+        td {
+            border: 3px solid rgb(10, 10, 10);
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .current-page {
+            background-color: aqua;
+
+        }
+
+        .style {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            padding: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div>
+        <h1>SCHOOL MANAGEMENT</h1>
+
+        <p>Manage students — add, edit, list and delete easily.</p>
+    </div>
+    <div style="text-align: right;">
+        <span id="user-email"></span><br>
+
+        <input type="button" value="logout" onclick="logoutUser()"><br>
+        <input type="button" value="Search" onclick="Search(true)">
+        <input type="button" value="clear" onclick="clearSearch()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" value="">
+        <label for="no">Roll no:</label>
+        <input type="number" id="roll" value="">
+        <label for="areas">Choose a area:</label>
+
+        <select name="areas" id="area">
+
+        </select><br><br>
+
+    </div>
+
+
+    <input type="button" value="Add Student" onclick="showform()">
+    <input type="button" value="Show Students" onclick="showlist()">
+
+    <div id="show-form" style="display: none;">
+        <p id="msg-success" style="color: hsl(160, 100%, 75%) ;font-style: italic;font-size: larger;"></p>
+        <p id="msg-error" style="color: hsla(24, 67%, 43%, 1.00) ;font-style: italic;font-size: larger;"></p>
+        <p id="msg" style="color: hsla(338, 74%, 41%, 1.00) ;font-style: italic;font-size: larger;"></p>
+
+
+        <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <input type="button" value="submmit" onclick="submmit()"><br><br>
+            <img id="student-img" width="150" height="150" />
+            <div>
+                <input type="hidden" id="studentid" name="studentid" value="">
+            </div>
+
+            <div>
+                <label for="rollno">ROLL NO</label>
+                <input id="rollno" name="rollno" type="text" placeholder="e.g. 2025-001"><br><br>
+            </div>
+            <div>
+                <label for="class2">CLASS</label>
+                <select id="class2" name="class2">
+                    <option value="">Select class</option>
+                    <option>Nursery</option>
+                    <option>KG</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+            </div>
+
+            <div class="row two"><br>
+                <div>
+                    <label for="firstname">FIRSTNAME</label>
+                    <input id="firstname" name="firstname" type="text"><br><br>
+                </div>
+                <div>
+                    <label for="lastname">LASTNAME</label>
+                    <input id="lastname" name="lastname" type="text"><br><br>
+                </div>
+            </div>
+
+            <label for="fathername">FATHERNAME</label>
+            <input id="fathername" name="fathername" type="text"><br><br>
+
+            <div class="row three">
+                <div>
+                    <label for="age">AGE</label>
+                    <input id="age" name="age" type="number" min="3" max="30"><br><br>
+                </div>
+                <div>
+                    <label for="marks">MARKS (%)</label>
+                    <input id="marks" name="marks" type="number" min="0" max="100"><br><br>
+                </div>
+                <div>
+                    <label for="fees">FEES</label>
+                    <input id="fees" name="fees" type="number" min="0"><br><br>
+                </div>
+            </div>
+
+            <div class="row two">
+                <div>
+                    <label for="email">EMAIL</label>
+                    <input id="email" name="email" type="email"><br><br>
+                </div>
+                <div>
+                    <label for="phone_number">PHONE</label>
+                    <input id="phone_number" name="phone_number" type="text" placeholder="digits only"><br><br>
+                </div>
+            </div>
+
+            <div class="row two">
+                <div>
+                    <label for="admission_year">ADMISSION YEAR</label>
+                    <input id="admission_year" name="admission_year" type="number" min="2000" max="2026"><br><br>
+                </div>
+                <div>
+
+                    <label for="country">Choose a country:</label>
+
+                    <select name="country" id="country" onchange="getstate()">
+
+                    </select><br><br>
+
+                    <label for="state">Choose a state:</label>
+
+                    <select name="state" id="state" onchange="getcity()">
+
+                    </select><br><br>
+
+                    <label for="city">Choose a city:</label>
+
+                    <select name="city" id="city" onchange="GETAREAS()">
+
+                    </select><br><br>
+
+                    <label for="area">Choose a area:</label>
+
+                    <select name="area" id="areas">
+
+                    </select><br><br>
+
+
+                </div>
+            </div>
+
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="">prefer not to say</option>
+            </select>
+
+
+            <div>
+                <input type="button" value="Save" onclick="save()"><br>
+                <input type="button" value="clearform" onclick="clearform()"><br>
+            </div>
+        </form>
+    </div>
+
+    </section>
+
+
+
+    <br><br>
+
+    <div id="show-list">
+        <table>
+
+            <td>Rollno</td>
+            <td>email</td>
+            <td>firstname</td>
+            <td>lastname</td>
+            <td>fathername</td>
+            <td>class2</td>
+            <td>age</td>
+            <td>marks</td>
+            <td>fees</td>
+            <td>admission_year</td>
+            <td>areaid</td>
+            <td>gender</td>
+            <td>phone_number</td>
+            <td colspan="2">Actions</td>
+            <tbody id="list1"></tbody>
+
+        </table>
+
+
+        <div id="pagination">
+
+        </div>
+
+
+    </div>
+    </div>
+    <script src="U1 2.JS"></script>
+    <script src="UI 1.JS"></script>
+
+</body>
+
+</html>

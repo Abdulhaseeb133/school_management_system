@@ -1,0 +1,9 @@
+git init
+
+ git remote add origin https://github.com/Abdulhaseeb133/school_management_system.git
+git add .
+
+git commit -m "Initial commit"
+git branch -M main
+git push -u origin main
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        body {
+            font-size: x-large;
+            font-style: oblique;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(55, 131, 169);
+            background-color: rgb(35, 34, 33);
+        }
+
+        th,
+        td {
+            border: 3px solid rgb(10, 10, 10);
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .current-page {
+            background-color: aqua;
+
+        }
+
+        .style {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            padding: 10px;
+        }
+
+        .error-text {
+            color: red;
+            font-style: italic;
+            font-size: larger;
+        }
+
+        .msg {
+            color: hsla(187, 74%, 41%, 1.00);
+            font-style: italic;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="show-form">
+        <p id="msg" class="msg"></p>
+        <form>
+            <input type="hidden" name="id" id="id" value="">
+
+            <label for="teacher">teacher to assign</label>
+            <select id="teacher" name="teacher">
+            </select><br><br>
+
+
+
+            <label for="sub">subject names</label>
+            <select id="teacher_subject" name="subject">
+            </select><br><br>
+
+
+            <div>
+                <input type="button" value="save" onclick="save_post()">
+                <input type="button" value="clear" onclick="clear()"><br><br>
+
+            </div>
+        </form>
+    </div>
+    <div id="show-list">
+        <table>
+            <td>id</td>
+            <td>Teacher name</td>
+            <td>Subject name</td>
+            <td>Actions</td>
+            <tbody id="list4"></tbody>
+
+        </table>
+    </div>
+
+
+
+
+
+</body>
+<script src="teacher_subject.js"></script>
+
+</html>

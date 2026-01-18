@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-size: x-large;
+            font-style: oblique;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: aquamarine;
+            background-color: rgb(35, 34, 33);
+        }
+
+        th,
+        td {
+            border: 3px solid rgb(10, 10, 10);
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>LOGIN FORM</h1>
+        <p>IF YOU DON'T HAVE AN ACCOUNT <a href="registor.html">REGISTTER</a></p>
+        <p>Log into your account to unlock unlimited creativity</p>
+
+    </div>
+
+    <div>
+        <p id="msg"></p>
+    </div>
+    <form>
+        <label for="user">Username</label>
+        <input type="text" id="name" value=""><br><br>
+
+        <label for="pass">Password</label>
+        <input type="text" id="pass" value=""><br><br>
+
+        <label for="role">Role</label>
+        <input type="text" id="role" value=""><br><br>
+
+        <label for="log">Login</label>
+        <input type="button" value="submmit" onclick="loginUser()"><br><br>
+        <input type="button" value="clear" onclick="clear()"><br><br>
+    </form>
+    <script src="login.js"></script>
+</body>
+
+
+</html>

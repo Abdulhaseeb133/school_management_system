@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-size: x-large;
+            font-style: oblique;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: aquamarine;
+            background-color: rgb(35, 34, 33);
+        }
+
+        th,
+        td {
+            border: 3px solid rgb(10, 10, 10);
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>REGISTERATION FORM</h1>
+        <p>IF YOU HAVE ALREADY AN ACCOUNT <a href="login.html">LOGIN</a>
+        </p>
+        <p>This is our company regestration form</p>
+
+    </div>
+    <div>
+        <p id="msg-success"></p>
+    </div>
+    <label for="user">Username</label>
+    <input type="text" id="name" value=""><br><br>
+
+    <label for="pass">Password</label>
+    <input type="text" id="pass" value=""><br><br>
+
+    <label for="confirm">Confirm Password</label>
+    <input type="text" id="pass2" value=""><br><br>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" value=""><br><br>
+
+
+    <label for="roll">Role</label>
+    <select name="Role" id="Role">
+        <option value="admin">admin</option>
+        <option value="student">student</option>
+    </select><br><br>
+
+    <label for="reg">Register</label>
+    <input type="button" value="submmit" onclick="registerUser()"><br><br>
+    <input type="button" value="clearform" onclick="clearform()">
+
+</body>
+
+<script src="registor.js"></script>
+
+</html>

@@ -1,0 +1,136 @@
+CREATE TABLE `students` (
+  `studentid` int NOT NULL AUTO_INCREMENT,
+  `rollno` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `fathername` varchar(45) DEFAULT NULL,
+  `class2` varchar(45) DEFAULT NULL,
+  `age` varchar(45) DEFAULT NULL,
+  `marks` varchar(45) DEFAULT NULL,
+  `fees` varchar(45) DEFAULT NULL,
+  `admission_year` varchar(45) DEFAULT NULL,
+  `areaid` int DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `phone_number` varchar(45) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`studentid`),
+  UNIQUE KEY `rollno_UNIQUE` (`rollno`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `teacher` (
+  `teacherid` int NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(45) DEFAULT NULL,
+  `lastname` varchar(45) DEFAULT NULL,
+  `fathername` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `phone_number` varchar(45) DEFAULT NULL,
+  `qualification` varchar(45) DEFAULT NULL,
+  `subject` varchar(45) DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `profile_picture` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`teacherid`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `users` (
+  `userid` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `role` varchar(20) DEFAULT 'user',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `state` (
+  `stateid` int NOT NULL AUTO_INCREMENT,
+  `statename` varchar(45) DEFAULT NULL,
+  `countryid` int DEFAULT NULL,
+  PRIMARY KEY (`stateid`),
+  KEY `fk_state_country_idx` (`countryid`),
+  CONSTRAINT `fk_state_country` FOREIGN KEY (`countryid`) REFERENCES `country` (`countryid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+CREATE TABLE `country` (
+  `countryid` int NOT NULL,
+  `countryname` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`countryid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `city` (
+  `cityid` int NOT NULL AUTO_INCREMENT,
+  `cityname` varchar(45) DEFAULT NULL,
+  `stateid` int DEFAULT NULL,
+  PRIMARY KEY (`cityid`),
+  KEY `fk_city_state_idx` (`stateid`),
+  CONSTRAINT `fk_city_state` FOREIGN KEY (`stateid`) REFERENCES `state` (`stateid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `area` (
+  `areaid` int NOT NULL AUTO_INCREMENT,
+  `areaname` varchar(45) DEFAULT NULL,
+  `postalcode` varchar(45) DEFAULT NULL,
+  `cityid` int DEFAULT NULL,
+  PRIMARY KEY (`areaid`),
+  KEY `fk_area_city_idx` (`postalcode`),
+  KEY `fk_area_city_idx1` (`cityid`),
+  CONSTRAINT `fk_area_city` FOREIGN KEY (`cityid`) REFERENCES `city` (`cityid`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+select * from teacher
+
+INSERT INTO teacher_subject (teacherid, subjectid)
+VALUES
+(3, 1), -- Teacher 1 teaches Math
+(4, 2), -- Teacher 1 teaches English
+(4, 3); -- Teacher 2 teaches Physics
+
+
+select * from student_subject
+
+INSERT INTO student_subject (studentid, subjectid)
+VALUES
+(1, 1), -- Student 5 enrolled in Math
+(1, 2), -- Student 5 enrolled in English
+(2, 1), -- Student 6 enrolled in Math
+(3, 3); -- Student 7 enrolled in Physics
+
+select ts.id,t.teacherid,s.subjectid,t.firstname,s.subjectname from teacher_subject ts
+inner join teacher t 
+on ts.teacherid=t.teacherid
+inner join subjects s 
+on ts.subjectid=s.subjectid
+
+ 
+select ss.id,ss.subjectid,s.studentid,concat(s.firstname, ' ' ,s.lastname) as student_name,st.subjectname, CONCAT(t.firstname, ' ', t.lastname) AS teacher_name from student_subject ss
+inner join students s 
+on ss.studentid=s.studentid
+inner join subjects st 
+ on ss.subjectid=st.subjectid
+ left join teacher_subject ts
+ on ts.subjectid=st.subjectid 
+ left join teacher t 
+ on ts.teacherid=t.teacherid
+
+
+-----------------------------------
+end point
+1.
+teacher-subject-assigned-list
+query
+ select ts.id, concat(t.firstname, ' ' ,t.lastname) as teacher_name ,s.subjectname from teacher_subject ts
+inner join teacher t 
+on ts.teacherid=t.teacherid
+inner join subjects s 
+on ts.subjectid=s.subjectid

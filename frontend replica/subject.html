@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        body {
+            font-size: x-large;
+            font-style: oblique;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(55, 131, 169);
+            background-color: rgb(35, 34, 33);
+        }
+
+        th,
+        td {
+            border: 3px solid rgb(10, 10, 10);
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .current-page {
+            background-color: aqua;
+
+        }
+
+        .style {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <h1>SUBJECT FORM</h1>
+
+        <p>SELECT SUBJECT OF YOUR INTEREST AND BE FREE TO DECIDE YOUR FUTURE.</p>
+    </div>
+
+
+    <div id="show-form">
+        <p id="msg-success" style="color: hsla(73, 77%, 44%, 1.00) ;font-style: italic;font-size: larger;"></p>
+        <p id="msg-error" style="color: hsla(24, 86%, 46%, 1.00) ;font-style: italic;font-size: larger;"></p>
+        <p id="msg" style="color: hsla(187, 74%, 41%, 1.00) ;font-style: italic;font-size: larger;"></p>
+
+        <div id="show-list">
+            <table>
+                <td>SubjectId</td>
+                <td>Subjectname</td>
+                <td>Subjectcode</td>
+                <td>Description</td>
+                <td>Created_at</td>
+                <td colspan="2">Actions</td>
+                <tbody id="list3"></tbody>
+
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+</body>
+<script src="subject.js"></script>
+
+</html>
